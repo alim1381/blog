@@ -2,7 +2,7 @@ import React from 'react'
 import { useQuery } from '@apollo/client'
 import { Grid } from '@mui/material'
 import { GET_BLOGS_INFO } from '../../graphql/Querys'
-import CartEL from '../shared/CartEL'
+import CardEL from '../shared/CardEL'
 
 function Blogs() {
 
@@ -16,7 +16,7 @@ function Blogs() {
       {
         data.posts.map(post => (
           <Grid item xs={12} sm={6} md={4} key={post.id}>
-            <CartEL {...post} />
+            <CardEL {...post} />
           </Grid>
         ))
       }

@@ -7,7 +7,7 @@ import { Container } from '@mui/material';
 
 export default function Header() {
   return (
-    <AppBar position="static">
+    <AppBar position="sticky">
       <Container maxWidth="lg">
         <Toolbar>
           <Typography variant="h6" component="h1" fontWeight="700" flex={1}>
