@@ -11,6 +11,20 @@ const theme = createTheme({
     fontWeightFat: 900,
   },
   direction: "rtl",
+  palette : {
+    primary : {
+      main : "#009688",
+      light : "#80cbc4",
+      dark : "800",
+    },
+    // secondary : {
+    //   main : "",
+    //   light : "",
+    //   dark : "",
+    // }
+  },
+
+
 });
 
 export default theme;
