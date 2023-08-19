@@ -6,7 +6,7 @@ import Blogs from '../blogs/Blogs'
 function HomePage() {
   return (
     <Container maxWidth='lg'>
-        <Grid container spacing={2} mx={3}>
+        <Grid container spacing={2} >
             <Grid item xs={12} md={3} mt={3} >
                 <Typography component='h3' variant='h5' mb={3} fontWeight={700}>
                     نویسنده ها

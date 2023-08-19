@@ -15,7 +15,7 @@ function Authors() {
       {
         data.authors.map((author , index) => (
           <React.Fragment key={author.id}>
-            <Grid item padding={2}>
+            <Grid item xs={12} padding={2}>
               <a
                 href={`/authors/${author.slug}`}
                 style={{
@@ -35,8 +35,11 @@ function Authors() {
               </a>
             </Grid>
             {
-              index !== data.authors.length - 1 && 
-              <Divider />
+              index !== data.authors.length - 1 && (
+                <Grid item xs={12}>
+                  <Divider variant='middle'/>
+                </Grid>
+              )
             }
           </React.Fragment>
         ))

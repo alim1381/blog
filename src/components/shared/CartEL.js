@@ -1,5 +1,6 @@
 import React from 'react'
 import { Avatar, Card, CardHeader, CardMedia, Typography , CardContent, CardActions, Button, Divider} from '@mui/material';
+import { Link } from 'react-router-dom';
 
 function CartEL({author , title , slug , coverPhoto , id}) {
     console.log(author);
@@ -31,13 +32,18 @@ function CartEL({author , title , slug , coverPhoto , id}) {
             </CardContent>
             <Divider variant='middle' sx={{margin : "10px"}} />
             <CardActions>
-                <Button
-                    variant='outlined'
-                    size='small'
-                    sx={{width : "100%" , borderRadius : 3}}
+                <Link
+                    to={`/blogs/${slug}`}
+                    style={{width : "100%"}}
                 >
-                    مطالعه مقاله
-                </Button>
+                    <Button
+                        variant='outlined'
+                        size='small'
+                        sx={{width : "100%" , borderRadius : 3}}
+                    >
+                        مطالعه مقاله
+                    </Button>
+                </Link>
             </CardActions>
         </Card>
     )
