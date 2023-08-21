@@ -2,12 +2,13 @@ import React from 'react'
 import { Avatar, Divider, Grid, Typography } from '@mui/material'
 import { useQuery } from '@apollo/client'
 import { GET_AUTHOR_INFO } from '../../graphql/Querys'
+import Loader from '../shared/Loader'
 
 function Authors() {
   const { loading , data , error } = useQuery(GET_AUTHOR_INFO)
   console.log(data);
 
-  if (loading) return <h4>Loading ...</h4>
+  if (loading) return <Loader />
 
   if (error) return <h4>Error ...</h4>
   return (
