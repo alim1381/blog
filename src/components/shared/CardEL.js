@@ -9,7 +9,7 @@ function CardEL({author , title , slug , coverPhoto , id}) {
             {
                 author && 
                 <CardHeader
-                    avatar={<Avatar src={author.avatar.url} sx={{marginLeft : 2}} />}
+                    avatar={author.avatar ? <Avatar src={author.avatar.url} sx={{marginLeft : 2}} /> : <Avatar sx={{marginLeft : 2}}>{author.name[0]}</Avatar>}
                     title={
                         <Typography component='p' variant='p' color='text.secondary'>
                             {author.name}

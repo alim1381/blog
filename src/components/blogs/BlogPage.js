@@ -1,6 +1,6 @@
 import React from 'react'
 import { useQuery } from '@apollo/client'
-import { useNavigate, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import { GET_POST_INFO } from '../../graphql/Querys'
 import { Avatar, Box, Container, Grid, Typography } from '@mui/material'
 import ArrowBackRoundedIcon from '@mui/icons-material/ArrowBackRounded';
@@ -45,14 +45,27 @@ function BlogPage() {
             src={data.post.coverPhoto.url}
             alt={data.post.title}
             width='100%'
+            // height='620px'
             style={{borderRadius : 15}}
           />
         </Grid>
         <Grid item xs={12} mt={7} display='flex' alignItems='center'>
-          <Avatar
-            src={data.post.author.avatar.url}
-            sx={{width : 80 , height : 80 , marginLeft : 2}}
-          />
+          <Link
+            to={`/authors/${data.post.author.slug}`}
+          >
+            {
+              data.post.author.avatar ? 
+                <Avatar
+                  src={data.post.author.avatar.url}
+                  sx={{width : 80 , height : 80 , marginLeft : 2}}
+                /> : 
+                <Avatar
+                  sx={{width : 80 , height : 80 , marginLeft : 2}}
+                >
+                  {data.post.author.name[0]}
+                </Avatar>
+            }
+          </Link>
           <Box component='div'>
             <Typography
               component='p'

@@ -65,6 +65,7 @@ const GET_POST_INFO = gql`
                 avatar {
                     url
                 }
+                slug
             }
             coverPhoto {
                 url

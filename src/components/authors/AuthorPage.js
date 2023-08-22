@@ -20,7 +20,16 @@ function AuthorPage() {
     <Container maxWidth='lg'>
       <Grid container mt={10}>
         <Grid item xs={12} display='flex' flexDirection='column' alignItems='center' >
-          <Avatar src={avatar.url} alt={name} sx={{width : '250px' , height : '250px'}}/>
+          {
+            avatar ? 
+              <Avatar src={avatar.url} alt={name} sx={{width : '250px' , height : '250px'}}/>
+              : 
+              <Avatar
+              sx={{width : '250px' , height : '250px' , fontSize : 80}}
+              >
+                {name[0]}
+              </Avatar>
+          }
           <Typography component='h3' variant='h5' fontWeight={700} mt={4}>{name}</Typography>
           <Typography component='h3' variant='h5' color='text.secondary' mt={2}>{field}</Typography>
         </Grid>
