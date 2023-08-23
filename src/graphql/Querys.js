@@ -89,4 +89,25 @@ const GET_POST_COMMENTS = gql`
     }
 
 `
-export { GET_BLOGS_INFO , GET_AUTHOR_INFO , GET_ONE_AUTHOR_INFO , GET_POST_INFO , GET_POST_COMMENTS };
+
+const GET_LOGIN_INFO = gql`
+    query getLoginInfo ($username : String!) {
+        author(where: {username: $username}) {
+            username
+            id
+            name
+            slug
+            avatar {
+                url
+            }
+        }
+    }
+`
+export {
+    GET_BLOGS_INFO,
+    GET_AUTHOR_INFO,
+    GET_ONE_AUTHOR_INFO,
+    GET_POST_INFO,
+    GET_POST_COMMENTS,
+    GET_LOGIN_INFO
+};

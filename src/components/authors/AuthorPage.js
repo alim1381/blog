@@ -10,7 +10,6 @@ import Loader from '../shared/Loader';
 function AuthorPage() {
   const {slug} = useParams()
   const { loading , data , error } = useQuery(GET_ONE_AUTHOR_INFO , {variables : {slug : slug}})
-  console.log(data);
   
   if (loading) return <Loader />
   if (error) return <h4>Error ...</h4>

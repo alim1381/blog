@@ -18,8 +18,6 @@ const theme = createTheme({
       dark : "800",
     },
   },
-
-
 });
 
 export default theme;
