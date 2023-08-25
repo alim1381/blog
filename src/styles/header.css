@@ -1,0 +1,28 @@
+.exit {
+    transform: translateX(-50px);
+    display: none;
+}
+.box {
+    transition: 0.2s;
+    transition-delay: -1s;
+}
+.box:hover {
+    
+    background-color: #e44242;
+    transition: 0.5s;
+    .exit {
+        transition: 0.5s;
+        display: flex;
+        transform: translateX(0px);
+        color: #fff;
+    }
+    .text {
+        transform: translateX(-20px);
+        display: none;
+    }
+    cursor: pointer;
+}
+.box:active {
+    
+    background-color: #e25e5e;
+}

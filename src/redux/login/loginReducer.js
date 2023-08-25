@@ -8,6 +8,10 @@ const loginRaducer = (state = initialState , action) => {
             return {
                 userData : action.payload
             }
+        case "EXIT":
+            return {
+                userData : null
+            }
         default:
             return state;
     }

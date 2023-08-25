@@ -4,5 +4,10 @@ const fetchLoginSuccess = (data) => {
         payload : data
     }
 }
+const exit = () => {
+    return {
+        type : "EXIT",
+    }
+}
 
-export { fetchLoginSuccess }
+export { fetchLoginSuccess , exit }
