@@ -23,5 +23,32 @@ const commentValidation = (data) => {
 
     return errors
 }
+const loginValidation = (data) => {
+    const datas = data
+    const errors = {}
+    if (!data.username) {
+        errors.username = "* این فیلد نباید خالی باشد"
+    } else {
+        delete errors.username
+    }
+    return errors
+}
 
-export { commentValidation }
+const postValidation = (data) => {
+    const datas = data
+    const errors = {}
+    if (!data.title) {
+        errors.title = "* این فیلد نباید خالی باشد"
+    } else {
+        delete errors.title
+    }
+
+    if (!data.content) {
+        errors.content = "* این فیلد نباید خالی باشد"
+    } else {
+        delete errors.content
+    }
+    return errors
+}
+
+export { commentValidation , loginValidation , postValidation }

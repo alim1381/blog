@@ -10,5 +10,19 @@ const CREATE_COMMENT = gql`
     }
 
 `
+const CREATE_POST = gql`
+    mutation createPost (
+        $title : String!,
+        $content : String!,
+        $slug : String!,
+        $id : ID!
 
-export { CREATE_COMMENT }
+    ) {
+        createPost(data: {title: $title, content: $content, slug: $slug , author: {connect: {id: $id}}}) {
+            id
+        }
+    }
+
+`
+
+export { CREATE_COMMENT , CREATE_POST }

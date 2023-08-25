@@ -84,7 +84,7 @@ function BlogPage() {
           </Box>
         </Grid>
         <Grid item xs={12} mt={5}>
-          <div dangerouslySetInnerHTML={{__html : sanitizeHtml(data.post.content.html)}}></div>
+          <Typography component='p' variant='p' sx={{width : "100%", wordWrap :"break-word"}} >{data.post.content}</Typography>
         </Grid>
         <Grid item xs={12} mt={5}>
           <CommentForm slug={slug} />

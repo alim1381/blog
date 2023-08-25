@@ -1,3 +1,4 @@
+import React from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import HomePage from './components/home/HomePage';
 import AuthorPage from './components/authors/AuthorPage'
@@ -7,6 +8,9 @@ import ScrollToTop from './components/shared/ScrollToTop';
 import LoginPage from './components/login/LoginPage';
 import { Provider } from 'react-redux';
 import store from './redux/store';
+import LoginAuth from './auth/LoginAuth';
+import PrivateRoutes from './auth/PrivateRoutes';
+import CreateBlog from './components/blogs/CreateBlog';
 
 function App() {
   return (
@@ -14,12 +18,19 @@ function App() {
       <Layout>
         <ScrollToTop />
         <Routes>
+          {/* public routes */}
           <Route path='/' element={<HomePage />} />
           <Route path='/authors/:slug' element={<AuthorPage />} />
           <Route path='/blogs/:slug' element={<BlogPage />} />
 
-          <Route path='/login' element={<LoginPage />} />
+          {/* private routes */}
+          <Route path='/createblog' element={<PrivateRoutes Component={<CreateBlog />} />} />
+          
 
+          {/* only if she is not logged in */}
+          <Route path='/login' element={<LoginAuth Component={<LoginPage />} />} />
+          
+          {/* redirect */}
           <Route path='/*' element={<Navigate to={'/'} />} />
         </Routes>
       </Layout>

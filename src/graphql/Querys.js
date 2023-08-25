@@ -71,9 +71,7 @@ const GET_POST_INFO = gql`
                 url
             }
             title
-            content {
-                html
-            }
+            content
         }
     }
 

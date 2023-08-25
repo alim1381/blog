@@ -145,6 +145,8 @@ function CommentForm({slug}) {
                   sx={{width : '100%'}}
                   value={sendData.text}
                   onChange={changeHandler}
+                  multiline
+                  minRows={4}
                   error
                 /> : 
                 <TextField
@@ -155,6 +157,8 @@ function CommentForm({slug}) {
                   value={sendData.text}
                   onChange={changeHandler}
                   onFocus={focusHandeler}
+                  multiline
+                  minRows={4}
                 />
             }
           </Grid>

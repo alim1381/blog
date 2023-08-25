@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Button, Container, Divider, FormControl, Grid, IconButton, InputAdornment, InputLabel, OutlinedInput, TextField, Typography } from '@mui/material'
 import RTL from '../../mui/RTL'
 import { Visibility, VisibilityOff } from '@mui/icons-material'
@@ -7,9 +7,9 @@ import { useLazyQuery } from '@apollo/client';
 import { GET_LOGIN_INFO } from '../../graphql/Querys';
 import { useDispatch } from 'react-redux';
 import { fetchLoginSuccess } from '../../redux/login/loginAction';
+import { loginValidation } from '../../helper/validation';
 
 function LoginPage() {
-  
   const navigate = useNavigate()
 
   const [sendData , setSendData] = useState({
@@ -20,8 +20,17 @@ function LoginPage() {
     username : "",
     // password : ""
   })
-  
+  const [errors , setError] = useState({})
+  const [showErrors , setShowErrors] = useState({})
+  const [press , setPress] = useState(false)
+
   const dispatch = useDispatch()
+
+  useEffect(() => {
+    setError(loginValidation(sendData))
+  } , [sendData])
+  console.log(errors);
+  console.log(showErrors);
   // const [showPassword, setShowPassword] = useState(false);
   
   // const handleClickShowPassword = () => setShowPassword((show) => !show);
@@ -35,16 +44,24 @@ function LoginPage() {
       [e.target.id] : e.target.value
     }))
   }
+  const focusHandeler = (e) => {
+    setShowErrors((prev) => ({
+      ...prev,
+      [e.target.id] : true
+    }))
+  }
 
   // api
   const [getUserInfo , {loading , data , error , called}] = useLazyQuery(GET_LOGIN_INFO , {
     variables : { username : variabelsData.username }
   })
   console.log({loading , data , error});
+
   const subHandler = () => {
     if (!called) {
       getUserInfo()
     }
+    setPress(true)
     setVariabelsData({username : sendData.username})
   }
 
@@ -53,6 +70,10 @@ function LoginPage() {
     dispatch(fetchLoginSuccess(data.author))
     window.localStorage.setItem('data' , JSON.stringify(data.author))
     navigate(`/authors/${data.author.slug}`)
+  } else if (data && data.author === null && press) {
+    setPress(false)
+    setError({username : "نام کاربری وارد شده صحیح نمی باشد"})
+    setShowErrors({username : true})
   }
   return (
     <Container maxWidth='xs'>
@@ -62,13 +83,29 @@ function LoginPage() {
         </Grid>
         <RTL>
           <Grid item xs={12} p={2}>
-            <TextField
-              label='نام کاربری'
-              variant='outlined'
-              id='username'
-              onChange={textChangeHandler}
-              fullWidth
-            />
+            {
+              errors.username && showErrors.username ? 
+                <TextField
+                  variant='outlined'
+                  id='username'
+                  label={`نام (${errors.username})`}
+                  sx={{width : '100%'}}
+                  value={sendData.username}
+                  onChange={textChangeHandler}
+                  fullWidth
+                  error
+                /> : 
+                <TextField
+                  variant='outlined'
+                  id='username'
+                  label='نام کاربری'
+                  sx={{width : '100%'}}
+                  value={sendData.username}
+                  onChange={textChangeHandler}
+                  onFocus={focusHandeler}
+                  fullWidth
+                />
+            }
           </Grid>
           {/* <Grid item xs={12} p={2}>
             <FormControl sx={{ width: '100%' }} variant="outlined">
