@@ -45,7 +45,10 @@ export default function Header() {
                 }
               </Box>
               :
-              <Link to={`/login`}>
+              <Link to={`/login`} style={{
+                textDecoration : "none",
+                color : "white",
+              }}>
                 <Button variant='outlined' sx={{color : "#fff" , border : "1px solid #fff" , '&:hover' : {background : "#fff" , color : "#009688" , border : 0}}}>ورود</Button>
               </Link>
           }

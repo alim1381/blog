@@ -37,7 +37,7 @@ function CardEL({author , title , slug , coverPhoto , id}) {
             <CardActions>
                 <Link
                     to={`/blogs/${slug}`}
-                    style={{width : "100%"}}
+                    style={{width : "100%" , textDecoration : "none"}}
                 >
                     <Button
                         variant='outlined'
