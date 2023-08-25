@@ -51,4 +51,35 @@ const postValidation = (data) => {
     return errors
 }
 
-export { commentValidation , loginValidation , postValidation }
+const signinValidation = (data) => {
+    const datas = data
+    const errors = {}
+    if (!data.username) {
+        errors.username = "* این فیلد نباید خالی باشد"
+    } else {
+        delete errors.username
+    }
+
+    if (!data.name) {
+        errors.name = "* این فیلد نباید خالی باشد"
+    } else {
+        delete errors.name
+    }
+
+    if (!data.field) {
+        errors.field = "* این فیلد نباید خالی باشد"
+    } else {
+        delete errors.field
+    }
+
+    if (!data.description) {
+        errors.description = "* این فیلد نباید خالی باشد"
+    } else {
+        delete errors.description
+    }
+
+
+    return errors
+}
+
+export { commentValidation , loginValidation , postValidation , signinValidation }

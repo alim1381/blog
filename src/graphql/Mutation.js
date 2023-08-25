@@ -24,5 +24,33 @@ const CREATE_POST = gql`
     }
 
 `
+const CREATE_NEW_AUTHOR = gql`
+    mutation postSigninInfo (
+        $username : String!, 
+        $name : String!, 
+        $field : String!, 
+        $description : String!, 
+    ) {
+        createAuthor(
+            data: {username: $username, name: $name, field: $field, slug: $username, description: $description}
+        ) {
+            username
+            id
+            name
+            slug
+            avatar {
+                url
+            }
+        }
+    }
+`
+const PUBLISH_AUTHOR = gql`
+    mutation publishAuthor ($id : ID!) {
+        publishAuthor(where: {id: $id}) {
+            slug
+        }
+    }
 
-export { CREATE_COMMENT , CREATE_POST }
+`
+
+export { CREATE_COMMENT , CREATE_POST , CREATE_NEW_AUTHOR , PUBLISH_AUTHOR }

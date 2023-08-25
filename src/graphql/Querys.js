@@ -48,9 +48,7 @@ const GET_ONE_AUTHOR_INFO = gql`
             }
             id
             }
-            description {
-                html
-            }
+            description
             field
         }
     }
@@ -101,6 +99,7 @@ const GET_LOGIN_INFO = gql`
         }
     }
 `
+
 export {
     GET_BLOGS_INFO,
     GET_AUTHOR_INFO,

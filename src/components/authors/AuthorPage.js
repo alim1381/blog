@@ -10,9 +10,11 @@ import Loader from '../shared/Loader';
 function AuthorPage() {
   const {slug} = useParams()
   const { loading , data , error } = useQuery(GET_ONE_AUTHOR_INFO , {variables : {slug : slug}})
-  
+  console.log({ loading , data , error });
   if (loading) return <Loader />
   if (error) return <h4>Error ...</h4>
+
+  if (data.author === null) return <h2>وجود ندارد</h2>
   
   const {author : {avatar , name , description , posts , field}} = data;
   return (
@@ -33,7 +35,7 @@ function AuthorPage() {
           <Typography component='h3' variant='h5' color='text.secondary' mt={2}>{field}</Typography>
         </Grid>
         <Grid item xs={12} mt={5}>
-          <div dangerouslySetInnerHTML={{__html : sanitizeHtml(description.html)}}></div>
+          <Typography component='p' variant='p'>{description}</Typography>
         </Grid>
         <Grid item mt={6} sx={{width : "100%"}}>
           <Typography component='h3' variant='h5' fontWeight={700}>مقالات {name}</Typography>

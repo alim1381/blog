@@ -11,6 +11,8 @@ import store from './redux/store';
 import LoginAuth from './auth/LoginAuth';
 import PrivateRoutes from './auth/PrivateRoutes';
 import CreateBlog from './components/blogs/CreateBlog';
+import SigninPage from './components/register/SigninPage';
+import PublishAuthor from './components/register/PublishAuthor';
 
 function App() {
   return (
@@ -25,10 +27,12 @@ function App() {
 
           {/* private routes */}
           <Route path='/createblog' element={<PrivateRoutes Component={<CreateBlog />} />} />
+          <Route path='/publishauthor' element={<PrivateRoutes Component={<PublishAuthor />} />} />
           
 
           {/* only if she is not logged in */}
           <Route path='/login' element={<LoginAuth Component={<LoginPage />} />} />
+          <Route path='/signin' element={<LoginAuth Component={<SigninPage />} />} />
           
           {/* redirect */}
           <Route path='/*' element={<Navigate to={'/'} />} />
