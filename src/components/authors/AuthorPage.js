@@ -6,13 +6,14 @@ import { Avatar, Container, Grid, Typography } from '@mui/material';
 import sanitizeHtml from 'sanitize-html';
 import CardEL from '../shared/CardEL';
 import Loader from '../shared/Loader';
+import ErrorGif from '../shared/ErrorGif';
 
 function AuthorPage() {
   const {slug} = useParams()
   const { loading , data , error } = useQuery(GET_ONE_AUTHOR_INFO , {variables : {slug : slug}})
   console.log({ loading , data , error });
   if (loading) return <Loader />
-  if (error) return <h4>Error ...</h4>
+  if (error) return <ErrorGif/>
 
   if (data.author === null) return <h2>وجود ندارد</h2>
   

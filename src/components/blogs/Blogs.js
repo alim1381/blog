@@ -4,13 +4,14 @@ import { Grid } from '@mui/material'
 import { GET_BLOGS_INFO } from '../../graphql/Querys'
 import CardEL from '../shared/CardEL'
 import Loader from '../shared/Loader'
+import ErrorGif from '../shared/ErrorGif'
 
 function Blogs() {
 
   const { loading , data , error } = useQuery(GET_BLOGS_INFO)
 
   if (loading) return <Loader />
-  if (error) return <h4>Error...</h4>
+  if (error) return <ErrorGif/>
 
   return (
     <Grid container spacing={2} >

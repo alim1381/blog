@@ -4,6 +4,7 @@ import { useQuery } from '@apollo/client'
 import { GET_AUTHOR_INFO } from '../../graphql/Querys'
 import Loader from '../shared/Loader'
 import { Link } from 'react-router-dom'
+import ErrorGif from '../shared/ErrorGif'
 
 function Authors() {
   const { loading , data , error } = useQuery(GET_AUTHOR_INFO)
@@ -11,7 +12,7 @@ function Authors() {
 
   if (loading) return <Loader />
 
-  if (error) return <h4>Error ...</h4>
+  if (error) return <ErrorGif/>
   return (
     <Grid container sx={{boxShadow : "rgba(0,0,0,0.1) 0px 4px 12px" , borderRadius : 4}}>
       {

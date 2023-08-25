@@ -54,9 +54,15 @@ const postValidation = (data) => {
 const signinValidation = (data) => {
     const datas = data
     const errors = {}
+    
     if (!data.username) {
         errors.username = "* این فیلد نباید خالی باشد"
     } else {
+        delete errors.username
+    }
+    if (data.username && !(!!data.username.match(/^[A-Za-z][A-Za-z0-9]*$/g))) {
+        errors.username = "* باید با حروف انگلیسی و اعداد تشکیل شود"
+    } else if (data.username) {
         delete errors.username
     }
 

@@ -7,6 +7,7 @@ import ArrowBackRoundedIcon from '@mui/icons-material/ArrowBackRounded';
 import CommentForm from '../comment/CommentForm'
 import Loader from '../shared/Loader'
 import sanitizeHtml from 'sanitize-html'
+import ErrorGif from '../shared/ErrorGif'
 
 function BlogPage() {
   const { slug } = useParams()
@@ -17,7 +18,7 @@ function BlogPage() {
   })
   if (loading) return <Loader />
 
-  if (error) return <h4>Error ...</h4>
+  if (error) return <ErrorGif/>
   console.log(data);
   return (
     <Container maxWidth='lg'>

@@ -18,7 +18,7 @@ function Comments({slug}) {
         flexDirection : "column "
       }}
     >
-      <Typography component='p' variant='h6' fontWeight={700} color='primary'>کامنت ها</Typography>
+      <Typography component='p' variant='h6' fontWeight={700} color='primary'>کامنت ها ({data.comments.length})</Typography>
       {
         data.comments.length > 0 ? data.comments.reverse().map(comment => (
           <Grid key={comment.id} item xs={12} border='1px solid silver' borderRadius={4} p={2} mt={2}>
